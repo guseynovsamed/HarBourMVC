@@ -1,0 +1,62 @@
+﻿@model YachtDetailVM
+
+
+<div class="container mt-5 px-5">
+    <div class="table-responsive">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th class="border-top-0">Name</th>
+                    <th class="border-top-0">Information</th>
+                    <th class="border-top-0">Description</th>
+                    <th class="border-top-0">Price</th>
+                    <th class="border-top-0">Build</th>
+                    <th class="border-top-0">Length</th>
+                    <th class="border-top-0">YachtCategory</th>
+                    <th class="border-top-0">Guest</th>
+                    <th class="border-top-0">Image</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="txt-oflo">
+                        <h6>@Model.Name</h6>
+                    </td>
+                    <td class="txt-oflo">
+                        <h6>@Model.Information</h6>
+                    </td>
+                    <td class="txt-oflo">
+                        <h6>@Model.Description</h6>
+                    </td>
+                    <td class="txt-oflo">
+                        <h6>@Model.Price</h6>
+                    </td>
+                    <td class="txt-oflo">
+                        <h6>@Model.Build</h6>
+                    </td>
+                    <td class="txt-oflo">
+                        <h6>@Model.Length</h6>
+                    </td>
+                    <td class="txt-oflo">
+                        <h6>@Model.YachtCategory</h6>
+                    </td>
+                    <td class="txt-oflo">
+                        <h6>@Model.Guest</h6>
+                    </td>
+                    <td class="txt-oflo">
+                        @foreach (var item in Model.YachtImages)
+                        {
+                            <img style="width:100px; height:auto;" ; src="~/assets/img/@item.Image" />
+                        }
+                    </td>
+                </tr>
+            <tbody>
+        </table>
+    </div>
+    <div class="form-group mt-3">
+        <div class="col-sm-12">
+            <a asp-action="Index" class="btn btn-primary">Back</a>
+        </div>
+    </div>
+
+</div>

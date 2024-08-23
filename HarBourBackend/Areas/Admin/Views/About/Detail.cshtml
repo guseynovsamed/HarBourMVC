@@ -1,0 +1,54 @@
+﻿@model AboutDetailVM
+
+
+<div class="container mt-5 px-5">
+    <div class="table-responsive">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th class="border-top-0">SinceDay</th>
+                    <th class="border-top-0">Title</th>
+                    <th class="border-top-0">Description</th>
+                    <th class="border-top-0">Advantage1</th>
+                    <th class="border-top-0">Advantage2</th>
+                    <th class="border-top-0">Advantage3</th>
+                    <th class="border-top-0">Image</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="txt-oflo">
+                        <h6>@Model.SinceDay</h6>
+                    </td>
+                    <td class="txt-oflo">
+                        <h6>@Model.Title</h6>
+                    </td>
+                    <td class="txt-oflo">
+                        <h6>@Model.Description</h6>
+                    </td>
+                    <td class="txt-oflo">
+                        <h6>@Model.Advantage1</h6>
+                    </td>
+                    <td class="txt-oflo">
+                        <h6>@Model.Advantage2</h6>
+                    </td>
+                    <td class="txt-oflo">
+                        <h6>@Model.Advantage3</h6>
+                    </td>
+                    <td class="txt-oflo">
+                        @foreach (var item in Model.AboutImages)
+                        {
+                            <img style="width:100px; height:auto;" ; src="~/assets/img/@item.Image" />
+                        }
+                    </td>
+                </tr>
+            <tbody>
+        </table>
+    </div>
+    <div class="form-group mt-3">
+        <div class="col-sm-12">
+            <a asp-action="Index" class="btn btn-primary">Back</a>
+        </div>
+    </div>
+
+</div>

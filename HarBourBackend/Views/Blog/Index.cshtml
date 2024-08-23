@@ -1,0 +1,87 @@
+﻿@model BlogPageVM
+
+
+
+@section css {
+    <link href="~/assets/css/blog.css" rel="stylesheet" />
+}
+
+
+
+@section js {
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="~/assets/js/blog.js"></script>
+
+}
+
+
+
+
+
+<header>
+    <div class="header-foto" style="background-image: url('/assets/img/@Model.Blogs.FirstOrDefault().BackgroundImage')">
+        <div class="container">
+            <div class="foto-title">
+                <h1>Articles About Yacht</h1>
+            </div>
+        </div>
+        <div class="cover"></div>
+    </div>
+</header>
+<main>
+    <section id="blog">
+        <div class="container">
+            <div class="row">
+                <div class="col-8">
+                    <div class="blog-item col-md-12" data-count="@ViewBag.count">
+
+                        <partial name="_BlogPartialView" model="Model" />
+
+                    </div>
+                </div>
+                <div class="col-4">
+                    <div class="blog-sidebar">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="widget">
+                                    <form action="">
+                                        <input class="search" type="text" placeholder="Type here ..." />
+                                        <button>
+                                            <i class="fa-solid fa-magnifying-glass"></i>
+                                        </button>
+                                    </form>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="widget">
+                                    <div class="widget-title">
+                                        <h6>
+                                            <span>↗</span>
+                                            Recent Posts
+                                        </h6>
+                                    </div>
+                                    <ul class="recet">
+                                        @foreach (var item in Model.Blogs.OrderByDescending(m => m.Id))
+                                        {
+                                            <li>
+                                                <div class="thum">
+                                                    <img src="~/assets/img/@item.Image" alt="" />
+                                                </div>
+                                                <a asp-action="Index" asp-route-id="@item.Id" asp-controller="BlogDetail">@item.Title</a>
+                                            </li>
+                                        }
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="show-more">
+                    <a class="" style="cursor:pointer;">
+                        Show more <br /><i class="fa-solid fa-angles-down fa-beat-fade"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>

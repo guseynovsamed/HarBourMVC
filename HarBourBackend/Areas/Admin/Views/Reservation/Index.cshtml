@@ -1,0 +1,45 @@
+﻿@model List<ReservationVM>
+
+
+<div class="container mt-5 px-5">
+    <div class="table-responsive">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th class="border-top-0">Mail</th>
+                    <th class="border-top-0">Yacht name</th>
+                    <th class="border-top-0">Order Status</th>
+                    <th class="border-top-0">Operations</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td class="txt-oflo">
+                            <h6>@item.UserEmail</h6>
+                        </td>
+                        <td class="txt-oflo">
+                            <h6>@item.YachtName</h6>
+                        </td>
+                        <td class="txt-oflo">
+                            <h6>@item.OrderStatus</h6>
+                        </td>
+                        <td>
+                            <a class="btn btn-info text-white" asp-area="Admin" asp-controller="Reservation" asp-action="Detail" asp-route-id="@item.Id">Info</a>
+                            @if (item.OrderStatus == Domain.Helpers.Enums.OrderStatus.Pending)
+                                {
+                                @if (User.IsInRole("SuperAdmin"))
+                                    {
+                                    <a class="btn btn-success text-white" asp-area="Admin" asp-controller="Reservation" asp-action="Accept" asp-route-id="@item.Id">Accept</a>
+                                    <a class="btn btn-danger text-white" asp-area="Admin" asp-controller="Reservation" asp-action="Reject" asp-route-id="@item.Id">Reject</a>
+                                    }
+                                }
+                            </td>
+                    </tr>
+                }
+            <tbody>
+        </table>
+    </div>
+</div>

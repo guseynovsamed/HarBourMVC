@@ -1,0 +1,45 @@
+﻿@model AboutCreateVM
+
+<div class="container mt-5 px-5">
+    <form class="form-horizontal form-material mx-2" method="post" asp-action="Create" enctype="multipart/form-data">
+        <div class="form-group">
+            <label class="col-md-12" style="font-weight:700">About</label>
+            <div style="display:flex; flex-direction:column; row-gap:5px;" class="area-input col-md-12 mt-3">
+                <label>SinceDay</label>
+                <input autocomplete="off" asp-for="SinceDay" type="number" placeholder="SinceDay..." class="form-control form-control-line" />
+                <span class="text-danger" asp-validation-for="SinceDay"></span>
+
+                <label>Title</label>
+                <input autocomplete="off" asp-for="Title" type="text" placeholder="Title..." class="form-control form-control-line" />
+                <span class="text-danger" asp-validation-for="Title"></span>
+
+                <label>Advantage1</label>
+                <input autocomplete="off" asp-for="Advantage1" type="text" placeholder="Advantage1..." class="form-control form-control-line" />
+                <span class="text-danger" asp-validation-for="Advantage1"></span>
+
+                <label>Advantage2</label>
+                <input autocomplete="off" asp-for="Advantage2" type="text" placeholder="Advantage2..." class="form-control form-control-line" />
+                <span class="text-danger" asp-validation-for="Advantage2"></span>
+
+                <label>Advantage3</label>
+                <input autocomplete="off" asp-for="Advantage3" type="text" placeholder="Advantage3..." class="form-control form-control-line" />
+                <span class="text-danger" asp-validation-for="Advantage3"></span>
+
+                <label>Description</label>
+                <input autocomplete="off" asp-for="Description" type="text" placeholder="Description..." class="form-control form-control-line" />
+                <span class="text-danger" asp-validation-for="Description"></span>
+
+                <label>AboutImages</label>
+                <input asp-for="AboutImages" class="form-control form-control-line" />
+                <span class="text-danger" asp-validation-for="AboutImages"></span>
+            </div>
+        </div>
+        <div class="form-group mt-3">
+            <div class="col-sm-12">
+                <button type="submit" class="btn btn-success">Submit</button>
+                <a asp-action="Index" class="btn btn-primary">Back</a>
+            </div>
+        </div>
+    </form>
+</div>
+

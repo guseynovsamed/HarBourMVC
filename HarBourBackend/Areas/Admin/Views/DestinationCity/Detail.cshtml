@@ -1,0 +1,66 @@
+﻿@model CityDetailVM
+
+
+<div class="container mt-5 px-5">
+    <div class="table-responsive">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th class="border-top-0">Day</th>
+                    <th class="border-top-0">Country</th>
+                    <th class="border-top-0">Description</th>
+                    <th class="border-top-0">Departure</th>
+                    <th class="border-top-0">MaxLimit</th>
+                    <th class="border-top-0">MinLimit</th>
+                    <th class="border-top-0">Name</th>
+                    <th class="border-top-0">Price</th>
+                    <th class="border-top-0">BackgroundImage</th>
+                    <th class="border-top-0">DestinationImages</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="txt-oflo">
+                        <h6>@Model.AccommodationDay</h6>
+                    </td>
+                    <td class="txt-oflo">
+                        <h6>@Model.Country</h6>
+                    </td>
+                    <td class="txt-oflo">
+                        <h6>@Model.Description</h6>
+                    </td>
+                    <td class="txt-oflo">
+                        <h6>@Model.Departure</h6>
+                    </td>
+                    <td class="txt-oflo">
+                        <h6>@Model.MaxLimit</h6>
+                    </td>
+                    <td class="txt-oflo">
+                        <h6>@Model.MinLimit</h6>
+                    </td>
+                    <td class="txt-oflo">
+                        <h6>@Model.Name</h6>
+                    </td>
+                    <td class="txt-oflo">
+                        <h6>@Model.Price</h6>
+                    </td>
+                    <td class="txt-oflo">
+                        <img style="width:100px; height:auto;" ; src="~/assets/img/@Model.BackgroundImage" />
+                    </td>
+                    <td class="txt-oflo">
+                        @foreach (var item in Model.DestinationImages)
+                        {
+                            <img style="width:100px; height:auto;" ; src="~/assets/img/@item.Image" />
+                        }
+                    </td>
+                </tr>
+            <tbody>
+        </table>
+    </div>
+    <div class="form-group mt-3">
+        <div class="col-sm-12">
+            <a asp-action="Index" class="btn btn-primary">Back</a>
+        </div>
+    </div>
+
+</div>

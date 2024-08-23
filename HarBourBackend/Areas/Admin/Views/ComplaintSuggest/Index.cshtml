@@ -1,0 +1,47 @@
+﻿@model IEnumerable<ComplaintVM>
+
+<div class="container mt-5 px-5">
+    <div class="create-category ">
+    </div>
+    <div class="table-responsive">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th class="border-top-0">UserFullName</th>
+                    <th class="border-top-0">UserSuggest</th>
+                    <th class="border-top-0">UserPhone</th>
+                    <th class="border-top-0">UserEmail</th>
+                    <th class="border-top-0">Subject</th>
+                    <th class="border-top-0">Operations</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td class="txt-oflo">
+                            <h6>@item.UserFullName</h6>
+                        </td>
+                        <td class="txt-oflo">
+                            <h6>@item.UserSuggest</h6>
+                        </td>
+                        <td class="txt-oflo">
+                            <h6>@item.UserPhone</h6>
+                        </td>
+                        <td class="txt-oflo">
+                            <h6>@item.UserEmail</h6>
+                        </td>
+                        <td class="txt-oflo">
+                            <h6>@item.Subject</h6>
+                        </td>
+                        <td>
+                            <form class="form-horizontal d-inline mt-4" method="post" asp-action="Delete" asp-route-id="@item.Id">
+                                <button type="submit" class="btn btn-danger text-white">Delete</button>
+                            </form>
+                        </td>
+                    </tr>
+                }
+            <tbody>
+        </table>
+    </div>
+</div>

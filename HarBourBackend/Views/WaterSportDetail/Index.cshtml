@@ -1,0 +1,141 @@
+﻿@model WaterSportDetailPageVM
+
+
+@section css {
+    <link href="~/assets/css/watersportdetail.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" integrity="sha512-vKMx8UnXk60zUwyUnUPM3HbQo8QfmNx7+ltw8Pm5zLusl1XIfwcxo8DbWCqMGKaWeNxWA8yrx5v3SaVpMvR3CA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+}
+
+
+
+@section js {
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js" integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="~/assets/js/watersportdetail.js"></script>
+
+}
+<header>
+    <div class="header-foto"
+         style="background-image: url('/assets/img/@Model.WaterSportDetail.SportImages.FirstOrDefault(m => m.IsMain).Image')">
+        <div class="container">
+            <div class="foto-title">
+                <h1>@Model.WaterSportDetail.Name</h1>
+            </div>
+        </div>
+        <div class="cover"></div>
+    </div>
+</header>
+
+<main>
+    <section id="watersport-detail">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 col-md-12 mb-30">
+                    <h6>Description</h6>
+                    <p class="mb-30">
+                        @Model.WaterSportDetail.Description
+                    </p>
+                    <h6>What's Included</h6>
+                    <div class="included mb-30">
+                        <ul>
+                            <li>Life jackets</li>
+                            <li>Bluetooth speaker</li>
+                            <li>Cooler & ice</li>
+                        </ul>
+                    </div>
+                    <h6>Additional Info</h6>
+                    <p class="mb-30">
+                        @Model.WaterSportDetail.Information
+                    </p>
+                    <div class="price">
+                        <span>
+                            <i class="fa-solid fa-hand-holding-dollar"></i>
+                            1 Hour
+                        </span>
+                        <p>$@Model.WaterSportDetail.Price</p>
+                    </div>
+                    <h6>Cancellation Policy</h6>
+                    <p class="mb-30">
+                        @Model.WaterSportDetail.Policy
+                    </p>
+                    <h6>Image Gallery</h6>
+                    <p class="mb-30">
+                        Yacht non lorem ac erat suscipit bibendum the miss fermen.
+                    </p>
+                    <div class="gallery-item">
+                        <div class="row">
+                            @foreach (var item in Model.WaterSportDetail.SportImages.Where(m=>!m.IsMain))
+                            {
+                                <div class="col-md-6">
+                                    <img src="~/assets/img/@item.Image" alt="" />
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-5 offset-lg-1 col-md-12">
+                    <div class="reservation">
+                        <h3>Make A Reservation</h3>
+                        <p>Call +1 123 456 0606</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="watersports">
+        <div class="container">
+            <div class="row">
+                <div class="text-center">
+                    <div class="sport-subtitle">↗ Our Activities</div>
+                    <div class="sport-title"><span>Other</span> Watersports</div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="owl-theme owl-carousel">
+                            @foreach (var item in Model.WaterSports)
+                            {
+                                <div class="watersports">
+                                    <div class="sport-image">
+                                        <img src="~/assets/img/@item.SportImages.FirstOrDefault(m=>m.IsMain).Image"
+                                             alt=""
+                                             class="img-fluid" />
+                                    </div>
+                                    <div class="caption padding-left">
+                                        <h4>
+                                            <a href="watersports-details.html">@item.Name</a>
+                                        </h4>
+                                        <p>
+                                            Hit the waves of gulf on a banana boat. Nesudea senocen
+                                            misuscipit non sagie in miss rana duru the fermen.
+                                        </p>
+                                        <div class="ullist">
+                                            <ul>
+                                                <li>Lorem amet ipsum.</li>
+                                                <li>Molestie elit vel cursus.</li>
+                                            </ul>
+                                        </div>
+                                        <div class="line-dec"></div>
+                                        <div class="book">
+                                            <div>
+                                                <a asp-action="Index" asp-route-id="@item.Id" asp-controller="WaterSportDetail" class="button">Know More</a>
+                                            </div>
+                                            <div>
+                                                <span>From</span>
+                                                <div class="price">$@item.Price <span>/ Hour</span></div>
+                                            </div>
+                                        </div>
+                                        <div class="iconso">
+                                            <span class="flaticon-rudder"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+

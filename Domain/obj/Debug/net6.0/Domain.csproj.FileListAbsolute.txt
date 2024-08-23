@@ -1,0 +1,14 @@
+/Users/samedguseynov/Desktop/Final Project/HarBourBackend/Domain/bin/Debug/net6.0/Domain.deps.json
+/Users/samedguseynov/Desktop/Final Project/HarBourBackend/Domain/bin/Debug/net6.0/Domain.runtimeconfig.json
+/Users/samedguseynov/Desktop/Final Project/HarBourBackend/Domain/bin/Debug/net6.0/Domain.dll
+/Users/samedguseynov/Desktop/Final Project/HarBourBackend/Domain/bin/Debug/net6.0/Domain.pdb
+/Users/samedguseynov/Desktop/Final Project/HarBourBackend/Domain/obj/Debug/net6.0/Domain.csproj.AssemblyReference.cache
+/Users/samedguseynov/Desktop/Final Project/HarBourBackend/Domain/obj/Debug/net6.0/Domain.GeneratedMSBuildEditorConfig.editorconfig
+/Users/samedguseynov/Desktop/Final Project/HarBourBackend/Domain/obj/Debug/net6.0/Domain.AssemblyInfoInputs.cache
+/Users/samedguseynov/Desktop/Final Project/HarBourBackend/Domain/obj/Debug/net6.0/Domain.AssemblyInfo.cs
+/Users/samedguseynov/Desktop/Final Project/HarBourBackend/Domain/obj/Debug/net6.0/Domain.csproj.CoreCompileInputs.cache
+/Users/samedguseynov/Desktop/Final Project/HarBourBackend/Domain/obj/Debug/net6.0/Domain.dll
+/Users/samedguseynov/Desktop/Final Project/HarBourBackend/Domain/obj/Debug/net6.0/refint/Domain.dll
+/Users/samedguseynov/Desktop/Final Project/HarBourBackend/Domain/obj/Debug/net6.0/Domain.pdb
+/Users/samedguseynov/Desktop/Final Project/HarBourBackend/Domain/obj/Debug/net6.0/Domain.genruntimeconfig.cache
+/Users/samedguseynov/Desktop/Final Project/HarBourBackend/Domain/obj/Debug/net6.0/ref/Domain.dll

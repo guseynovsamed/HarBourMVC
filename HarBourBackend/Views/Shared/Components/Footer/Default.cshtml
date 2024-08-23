@@ -1,0 +1,117 @@
+﻿@model FooterVM
+
+<footer>
+    <div class="container">
+        <div class="footer-up">
+            <div class="row">
+                <div class="footer-contact col-md-12">
+                    <div class="contact-infos">
+                        <div class="icon">
+                            <div class="icon-footer">
+                                <i class="fa-solid fa-phone"></i>
+                            </div>
+                        </div>
+                        <div class="text">
+                            <h6>Call us</h6>
+                            <p>@Model.Settings["Phone"]</p>
+                        </div>
+                    </div>
+                    <div class="line"></div>
+                    <div class="contact-infos">
+                        <div class="icon">
+                            <div class="icon-footer">
+                                <i class="fa-solid fa-envelope"></i>
+                            </div>
+                        </div>
+                        <div class="text">
+                            <h6>Write to us</h6>
+                            <p>@Model.Settings["Email"]</p>
+                        </div>
+                    </div>
+                    <div class="line"></div>
+                    <div class="contact-infos">
+                        <div class="icon">
+                            <div class="icon-footer">
+                                <i class="fa-solid fa-map-location"></i>
+                            </div>
+                        </div>
+                        <div class="text">
+                            <h6>Address</h6>
+                            <p>@Model.Settings["Address"]</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-center">
+            <div class="col-md-4">
+                <div class="left">
+                    <div class="footer-logo">
+                        <img src="~/assets/img/logo-light.png" alt="" />
+                    </div>
+                    <p>
+                        Quisque imperdiet sapien miss orttito in the bibendum
+                        sellentesque the omon era acar accumsa enim diam the nesuen.
+                    </p>
+                    <div class="social-icon">
+                        <ul>
+                            <li>
+                                <a href="">
+                                    <i class="fa-brands fa-twitter"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="">
+                                    <i class="fa-brands fa-instagram"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="">
+                                    <i class="fa-brands fa-youtube"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="center">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a asp-controller="Home" asp-action="Index">Home</a></li>
+                        <li><a asp-controller="About" asp-action="Index">About</a></li>
+                        <li><a asp-controller="Yacht" asp-action="Index">Yachts</a></li>
+                        <li><a asp-controller="Destination" asp-action="Index">Destination</a></li>
+                        <li><a asp-controller="Watersport" asp-action="Index">Watersports</a></li>
+                        <li><a asp-controller="Blog" asp-action="Index">Blog</a></li>
+                        <li><a asp-controller="Contact" asp-action="Index">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="widget subscribe">
+                    <h3>Subscribe</h3>
+                    <p>
+                        To get latest update about our offers, promotions, and discounts
+                        subscribe our newsletter!
+                    </p>
+                    <div class="subscride">
+                        <form action="">
+                            <input type="email" class="subscribe-input" autocomplete="off" placeholder="Email Address" />
+                            <button  class="subscriber" type="submit">
+                                <i class="fa-regular fa-paper-plane"></i>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-down col-md-12">
+            <p>
+                ©2024
+                <a target="_blank" href="https://www.instagram.com/guseynovsamed/">Səməd Hüseynov</a>
+                . All rights reserved.
+            </p>
+        </div>
+    </div>
+</footer>

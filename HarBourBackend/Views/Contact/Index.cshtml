@@ -1,0 +1,102 @@
+﻿@model ContactVM
+
+
+
+@section css {
+    <link href="~/assets/css/contact.css" rel="stylesheet" />
+}
+
+
+
+@section js {
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="~/assets/js/contact.js"></script>
+}
+
+
+
+
+
+<header>
+    <div class="header-foto" style="background-image: url(assets/img/2.jpg)">
+        <div class="container">
+            <div class="foto-title">
+                <h1>
+                    Contact
+                    <span>Us</span>
+                </h1>
+            </div>
+        </div>
+        <div class="cover"></div>
+    </div>
+</header>
+<main>
+    <section id="contact">
+        <div class="container">
+            <div class="row">
+                <div class="col-6">
+                    <div class="item">
+                        <h2>Contact Info</h2>
+                        <div class="contact-info">
+                            <div class="icon">
+                                <i class="fa-solid fa-phone"></i>
+                            </div>
+                            <div class="text">
+                                <p>Phone Number</p>
+                                <a href="tel:+994553880014" >@Model.Settings["Phone"]</a>
+                            </div>
+                        </div>
+                        <div class="contact-info">
+                            <div class="icon">
+                                <i class="fa-regular fa-envelope"></i>
+                            </div>
+                            <div class="text">
+                                <p>Email Address</p>
+                                <a href="">@Model.Settings["Email"]</a>
+                            </div>
+                        </div>
+                        <div class="contact-info">
+                            <div class="icon">
+                                <i class="fa-solid fa-location-dot"></i>
+                            </div>
+                            <div class="text">
+                                <p>Office Address</p>
+                                <a href="">@Model.Settings["Address"]</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="user-contact-info">
+                        <h2>Leave a Message</h2>
+                        <form >
+                            <div class="row">
+                                <div class="col-6">
+                                    <input type="text" value="@Model.UserFullName" class="fullname" placeholder="Your Name" />
+                                </div>
+                                <div class="col-6">
+                                    <input type="text" value="@Model.UserEmail" class="email" placeholder="Your Email" />
+                                </div>
+                                <div class="col-6">
+                                    <input type="number" class="phone-number" placeholder="Your Phone" />
+                                </div>
+                                <div class="col-6">
+                                    <input type="text" class="subject" placeholder="Subject" />
+                                </div>
+                                <div class="col-12">
+                                    <textarea name="message" class="suggest" placeholder="Message" id=""></textarea>
+                                </div>
+                                <div class="col-12">
+                                    <button type="submit" class="add-suggestion">
+                                        <span>Send Message</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>

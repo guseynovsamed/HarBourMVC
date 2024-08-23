@@ -1,0 +1,55 @@
+﻿@model YachtCreateVM
+
+<div class="container mt-5 px-5">
+    <form class="form-horizontal form-material mx-2" method="post" asp-action="Create" enctype="multipart/form-data">
+        <div class="form-group">
+            <label class="col-md-12" style="font-weight:700">Yacht</label>
+            <div style="display:flex; flex-direction:column; row-gap:5px;"  class="col-md-12 mt-3">
+                <table>Name</table>
+                <input autocomplete="off" asp-for="Name" type="text" maxlength="100" placeholder="Name..." class="form-control form-control-line" />
+                <span class="text-danger" asp-validation-for="Name"></span>
+
+                <table>Description</table>
+                <input autocomplete="off" asp-for="Description" type="text" maxlength="100" placeholder="Description..." class="form-control form-control-line" />
+                <span class="text-danger" asp-validation-for="Description"></span>
+
+                <table>Price</table>
+                <input autocomplete="off" asp-for="Price" type="number" maxlength="100" placeholder="Price..." class="form-control form-control-line" />
+                <span class="text-danger" asp-validation-for="Price"></span>
+
+                <table>Information</table>
+                <input autocomplete="off" asp-for="Information" type="text" maxlength="100" placeholder="Information..." class="form-control form-control-line" />
+                <span class="text-danger" asp-validation-for="Information"></span>
+
+                <table>Guest</table>
+                <input autocomplete="off" asp-for="Guest" type="number" maxlength="100" placeholder="Guest..." class="form-control form-control-line" />
+                <span class="text-danger" asp-validation-for="Guest"></span>
+
+                <table>Length</table>
+                <input autocomplete="off" asp-for="Length" type="number" maxlength="100" placeholder="Length..." class="form-control form-control-line" />
+                <span class="text-danger" asp-validation-for="Length"></span>
+
+                <table>Build</table>
+                <input autocomplete="off" asp-for="Build" type="text" maxlength="100" placeholder="Build..." class="form-control form-control-line" />
+                <span class="text-danger" asp-validation-for="Build"></span>
+
+
+                <table>Category</table>
+                <select class="form-control mt-3" asp-for="CategoryId" asp-items="@ViewBag.category">
+                </select>
+
+                <table>YachtImages</table>
+                <input asp-for="YachtImages" class="form-control form-control-line" />
+                <span class="text-danger" asp-validation-for="YachtImages"></span>
+
+            </div>
+        </div>
+        <div class="form-group mt-3">
+            <div class="col-sm-12">
+                <button type="submit" class="btn btn-success">Submit</button>
+                <a asp-action="Index" class="btn btn-primary">Back</a>
+            </div>
+        </div>
+    </form>
+</div>
+

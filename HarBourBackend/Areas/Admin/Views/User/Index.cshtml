@@ -1,0 +1,50 @@
+﻿@model List<UserVM>
+
+
+
+
+
+
+<div class="container mt-5 px-5">
+        <div class="create-category ">
+            <a asp-area="Admin" asp-controller="User" asp-action="AddRole" class="btn btn-success text-white mr-10">Add role</a>
+        </div>
+    <div class="table-responsive">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th class="border-top-0">FullName</th>
+                    <th class="border-top-0">UserName</th>
+                    <th class="border-top-0">Email</th>
+                    <th class="border-top-0">Roles</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.FullName</td>
+                        <td>@item.UserName</td>
+                        <td>@item.Email</td>
+                        <td>
+                            <form asp-action="RemoveRole" method="post" class="form-inline">
+                                @Html.AntiForgeryToken()
+                                <input type="hidden" name="UserId" value="@item.UserId" />
+                                <select name="RoleName" class="form-control select-smaller">
+                                    @foreach (var role in item.UserRoles)
+                                    {
+                                        <option value="@role">@role</option>
+                                    }
+                                </select>
+                        <td>
+                            <button type="submit" class="btn btn-danger text-white remove-role-btn">Remove Role</button>
+                        </td>
+                        </form>
+
+                        </td>
+                    </tr>
+                }
+            <tbody>
+        </table>
+    </div>
+</div>

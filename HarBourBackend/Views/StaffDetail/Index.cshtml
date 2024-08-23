@@ -1,0 +1,143 @@
+﻿@model StaffDetailPageVM
+
+
+
+
+
+@section css {
+    <link href="~/assets/css/teamdetails.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" integrity="sha512-vKMx8UnXk60zUwyUnUPM3HbQo8QfmNx7+ltw8Pm5zLusl1XIfwcxo8DbWCqMGKaWeNxWA8yrx5v3SaVpMvR3CA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+}
+
+
+
+@section js {
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js" integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="~/assets/js/teamdetails.js"></script>
+
+}
+
+
+<header>
+    <div class="header-foto" style="background-image: url('/assets/img/2.jpg')">
+        <div class="container">
+            <div class="foto-title">
+                <h1>@Model.StaffDetail.Fullname</h1>
+            </div>
+        </div>
+        <div class="cover"></div>
+    </div>
+</header>
+
+<main>
+    <section id="team-info">
+        <div class="container">
+            <div class="row">
+                <div class="col-6">
+                    <div class="img-icon">
+                        <div class="img">
+                            <img src="~/assets/img/@Model.StaffDetail.Image" alt="" />
+                        </div>
+                        <div class="icon">
+                            <a href="">
+                                <i class="fa-brands fa-instagram"></i>
+                            </a>
+                            <a href="">
+                                <i class="fa-brands fa-whatsapp"></i>
+                            </a>
+                            <a href="">
+                                <i class="fa-brands fa-youtube"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="info">
+                        <h3>@Model.StaffDetail.Fullname</h3>
+                        <h6>@Model.StaffDetail.Position</h6>
+                        <p>
+                            @Model.StaffDetail.Description
+                        </p>
+                        <ul>
+                            <li>
+                                <div class="list-icon">
+                                    <i class="fa-solid fa-phone"></i>
+                                </div>
+                                <div class="list-text">
+                                    <p>@Model.StaffDetail.Phone</p>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="list-icon">
+                                    <i class="fa-regular fa-envelope"></i>
+                                </div>
+                                <div class="list-text">
+                                    <p>@Model.StaffDetail.Mail</p>
+                                </div>
+                            </li>
+                        </ul>
+                        <ul class="tab-list">
+                            <li class="biography-bt">Biography</li>
+                            <li class="education-bt">Education</li>
+                            <li class="awards-bt">Awards</li>
+                        </ul>
+                        <div class="tab-text">
+                            <div class="biography">
+                                <p>
+                                    @Model.StaffDetail.Biography
+                                </p>
+                            </div>
+                            <div class="education d-none">
+                                <p>
+                                    @Model.StaffDetail.Education
+                                </p>
+                            </div>
+                            <div class="awards d-none">
+                                <p>
+                                    @Model.StaffDetail.Awards
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="team">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 mb-30 text-center">
+                    <div class="section-subtitle">↗ Young Captains</div>
+                    <div class="section-title"><span>Other</span> Skippers</div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="owl-theme owl-carousel">
+                        @foreach (var item in Model.Staff)
+                        {
+                            <div class="item">
+                                <div class="img">
+                                    <img src="~/assets/img/@item.Image" alt="" class="w-100" />
+                                </div>
+                                <div class="con">
+                                    <h5 class="mb-0">
+                                        @item.Fullname<br /><span>@item.Position.Name</span>
+                                    </h5>
+                                    <div class="arrow">
+                                        <a asp-action="Index" asp-route-id="@item.Id" asp-controller="StaffDetail" >
+                                            <i class="fa-solid fa-arrow-right"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+

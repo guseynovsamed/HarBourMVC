@@ -1,0 +1,178 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.32" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="6.0.32">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.32" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.32">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="6.0.32" />
+    <PackageReference Include="MailKit" Version="4.7.1.1" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Service\Service.csproj">
+      <GlobalPropertiesToRemove></GlobalPropertiesToRemove>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Remove="wwwroot\" />
+    <Content Remove="wwwroot\Admin\" />
+    <Content Remove="wwwroot\Admin\assets\img\" />
+    <Content Remove="wwwroot\Admin\js\" />
+    <Content Remove="wwwroot\templates\" />
+    <Content Remove="wwwroot\templates\reservation\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="wwwroot\" />
+    <Folder Include="Areas\" />
+    <Folder Include="Areas\Admin\" />
+    <Folder Include="Areas\Admin\Views\" />
+    <Folder Include="Areas\Admin\Controllers\" />
+    <Folder Include="Areas\Admin\Views\Shared\" />
+    <Folder Include="wwwroot\Admin\" />
+    <Folder Include="Areas\Admin\Views\Dashboard\" />
+    <Folder Include="ViewModels\" />
+    <Folder Include="ViewModels\Sliders\" />
+    <Folder Include="Controllers\" />
+    <Folder Include="Views\" />
+    <Folder Include="Views\Home\" />
+    <Folder Include="Areas\Admin\Views\SliderVideo\" />
+    <Folder Include="Helpers\" />
+    <Folder Include="Helpers\Extentions\" />
+    <Folder Include="wwwroot\Admin\assets\img\" />
+    <Folder Include="Areas\Admin\Views\Partner\" />
+    <Folder Include="ViewModels\Partner\" />
+    <Folder Include="Areas\Admin\Views\Setting\" />
+    <Folder Include="ViewModels\Position\" />
+    <Folder Include="ViewModels\Setting\" />
+    <Folder Include="Areas\Admin\Views\Position\" />
+    <Folder Include="ViewModels\YacthCategory\" />
+    <Folder Include="Areas\Admin\Views\YachtCategory\" />
+    <Folder Include="ViewModels\About\" />
+    <Folder Include="Areas\Admin\Views\About\" />
+    <Folder Include="wwwroot\Admin\js\" />
+    <Folder Include="ViewModels\Staff\" />
+    <Folder Include="Areas\Admin\Views\Staff\" />
+    <Folder Include="ViewModels\DestinationCountry\" />
+    <Folder Include="Areas\Admin\Views\DestinationCountry\" />
+    <Folder Include="Areas\Admin\Views\Subscriber\" />
+    <Folder Include="ViewModels\Complaints\" />
+    <Folder Include="Areas\Admin\Views\ComplaintSuggest\" />
+    <Folder Include="ViewModels\DestinationCity\" />
+    <Folder Include="Areas\Admin\Views\DestinationCity\" />
+    <Folder Include="ViewModels\WaterSport\" />
+    <Folder Include="Areas\Admin\Views\WaterSport\" />
+    <Folder Include="ViewModels\Blog\" />
+    <Folder Include="Areas\Admin\Views\Blog\" />
+    <Folder Include="ViewModels\Yacht\" />
+    <Folder Include="Areas\Admin\Views\Yacht\" />
+    <Folder Include="ViewModels\Account\" />
+    <Folder Include="ViewModels\User\" />
+    <Folder Include="Areas\Admin\Views\User\" />
+    <Folder Include="Helpers\Enums\" />
+    <Folder Include="ViewModels\Comment\" />
+    <Folder Include="Areas\Admin\Views\Comment\" />
+    <Folder Include="Views\Shared\" />
+    <Folder Include="Views\Shared\Components\" />
+    <Folder Include="Views\Shared\Components\Footer\" />
+    <Folder Include="ViewComponents\" />
+    <Folder Include="Views\Shared\Components\Header\" />
+    <Folder Include="Views\Blog\" />
+    <Folder Include="Views\About\" />
+    <Folder Include="Views\Contact\" />
+    <Folder Include="Views\Destination\" />
+    <Folder Include="Views\Watersport\" />
+    <Folder Include="Views\Yacht\" />
+    <Folder Include="ViewModels\Contact\" />
+    <Folder Include="Views\BlogDetail\" />
+    <Folder Include="Views\Account\" />
+    <Folder Include="wwwroot\templates\" />
+    <Folder Include="Views\DestinationDetail\" />
+    <Folder Include="Views\YachtDetail\" />
+    <Folder Include="Views\WaterSportDetail\" />
+    <Folder Include="Views\StaffDetail\" />
+    <Folder Include="ViewModels\Reservation\" />
+    <Folder Include="ViewModels\Order\" />
+    <Folder Include="Areas\Admin\Views\Reservation\" />
+    <Folder Include="wwwroot\templates\reservation\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="Areas\" />
+    <None Remove="Areas\Admin\" />
+    <None Remove="Areas\Admin\Views\" />
+    <None Remove="Areas\Admin\Controllers\" />
+    <None Remove="Areas\Admin\Views\Shared\" />
+    <None Remove="Areas\Admin\Views\Dashboard\" />
+    <None Remove="ViewModels\" />
+    <None Remove="ViewModels\Sliders\" />
+    <None Remove="Controllers\" />
+    <None Remove="Views\" />
+    <None Remove="Views\Home\" />
+    <None Remove="Areas\Admin\Views\SliderVideo\" />
+    <None Remove="Helpers\" />
+    <None Remove="Helpers\Extentions\" />
+    <None Remove="Areas\Admin\Views\Partner\" />
+    <None Remove="ViewModels\Partner\" />
+    <None Remove="Areas\Admin\Views\Setting\" />
+    <None Remove="ViewModels\Position\" />
+    <None Remove="ViewModels\Setting\" />
+    <None Remove="Areas\Admin\Views\Position\" />
+    <None Remove="ViewModels\YacthCategory\" />
+    <None Remove="Areas\Admin\Views\YachtCategory\" />
+    <None Remove="ViewModels\About\" />
+    <None Remove="Areas\Admin\Views\About\" />
+    <None Remove="ViewModels\Staff\" />
+    <None Remove="Areas\Admin\Views\Staff\" />
+    <None Remove="ViewModels\DestinationCountry\" />
+    <None Remove="Areas\Admin\Views\DestinationCountry\" />
+    <None Remove="Areas\Admin\Views\Subscriber\" />
+    <None Remove="ViewModels\Complaints\" />
+    <None Remove="Areas\Admin\Views\ComplaintSuggest\" />
+    <None Remove="ViewModels\DestinationCity\" />
+    <None Remove="Areas\Admin\Views\DestinationCity\" />
+    <None Remove="ViewModels\WaterSport\" />
+    <None Remove="Areas\Admin\Views\WaterSport\" />
+    <None Remove="ViewModels\Blog\" />
+    <None Remove="Areas\Admin\Views\Blog\" />
+    <None Remove="ViewModels\Yacht\" />
+    <None Remove="Areas\Admin\Views\Yacht\" />
+    <None Remove="ViewModels\Account\" />
+    <None Remove="ViewModels\User\" />
+    <None Remove="Areas\Admin\Views\User\" />
+    <None Remove="Helpers\Enums\" />
+    <None Remove="ViewModels\Comment\" />
+    <None Remove="Areas\Admin\Views\Comment\" />
+    <None Remove="Views\Shared\" />
+    <None Remove="Views\Shared\Components\" />
+    <None Remove="Views\Shared\Components\Footer\" />
+    <None Remove="ViewComponents\" />
+    <None Remove="Views\Shared\Components\Header\" />
+    <None Remove="Views\Blog\" />
+    <None Remove="Views\About\" />
+    <None Remove="Views\Contact\" />
+    <None Remove="Views\Destination\" />
+    <None Remove="Views\Watersport\" />
+    <None Remove="Views\Yacht\" />
+    <None Remove="ViewModels\Contact\" />
+    <None Remove="Views\BlogDetail\" />
+    <None Remove="Views\Account\" />
+    <None Remove="Views\DestinationDetail\" />
+    <None Remove="Views\YachtDetail\" />
+    <None Remove="Views\WaterSportDetail\" />
+    <None Remove="Views\StaffDetail\" />
+    <None Remove="ViewModels\Reservation\" />
+    <None Remove="ViewModels\Order\" />
+    <None Remove="Areas\Admin\Views\Reservation\" />
+  </ItemGroup>
+</Project>

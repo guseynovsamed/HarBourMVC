@@ -1,0 +1,28 @@
+﻿@model SliderVideoDetailVM
+
+<div class="container mt-5 px-5">
+    <div class="table-responsive table--no-card m-b-30">
+        <table class="table table-borderless table-striped table-earning">
+            <thead>
+                <tr>
+                    <th>TopTitle</th>
+                    <th>MainTitle</th>
+                    <th>Image</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>@Model.TopTitle</td>
+                    <td>@Model.MainTitle</td>
+                    <td>@Model.Description</td>
+                    <td>
+                        <video src="~/Admin/assets/img/@Model.Video" playsinline="" autoplay="" loop="" style="width:200px; height:auto;" muted="">
+                        </video>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <a asp-action="Index" class="btn btn-primary">Back</a>
+
+</div>

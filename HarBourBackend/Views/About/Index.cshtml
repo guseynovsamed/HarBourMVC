@@ -1,0 +1,194 @@
+﻿@model AboutPageVM
+
+@section css {
+    <link href="~/assets/css/about.css" rel="stylesheet" />
+}
+
+
+
+@section js {
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="~/assets/js/about.js"></script>
+
+}
+
+<header>
+    <div class="header-foto" style="background-image: url(assets/img/2.jpg)">
+        <div class="container">
+            <div class="foto-title">
+                <h5>
+                    <span>↗</span>
+                    Welcome
+                </h5>
+                <h1>Harbour Yachting</h1>
+                <p>About</p>
+            </div>
+        </div>
+        <div class="cover"></div>
+    </div>
+</header>
+<main>
+    <section id="about">
+        <div class="container">
+            <div class="row">
+                <div class="col-5">
+                    <div class="about-slider">
+                        <div class="about owl-carousel item">
+                            @foreach (var item in Model.About.AboutImages)
+                            {
+                                <div class="img">
+                                    <img src="~/assets/img/@item.Image" alt="" />
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="about-text">
+                        <div class="title">
+                            <h2>↗ Since @Model.About.Title</h2>
+                            <h1>@Model.About.Title</h1>
+                            <p>
+                                @Model.About.Description
+                            </p>
+                            <ul>
+                                <li>
+                                    <i class="fa-solid fa-check"></i>
+                                    @Model.About.Advantage1
+                                </li>
+                                <li>
+                                    <i class="fa-solid fa-check"></i>
+                                    @Model.About.Advantage2
+                                </li>
+                                <li>
+                                    <i class="fa-solid fa-check"></i>
+                                    @Model.About.Advantage3
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="about-call">
+                            <i class="fa-solid fa-phone fa-beat"></i>
+                            <div class="call-number">
+                                <p>Call To Ask Any Queary</p>
+                                <a href="tel:0800333444">0800 333 444</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="icon-main">
+                    <i class="fa-solid fa-anchor" style="color: #dedede"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="down-video">
+        <div class="container">
+            <div class="up-title">
+                <p class="subtitle">↗ Discover</p>
+                <p class="title">Watch Yacht Video</p>
+            </div>
+            <div class="video">
+                <a href="https://www.youtube.com/watch?v=Wz0jbPIWU30">
+                    <div class="play-bt">
+                        <span class="icon">
+                            <i class="fa-solid fa-play"></i>
+                        </span>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section id="skippers">
+        <div class="container">
+            <div class="up-title">
+                <p class="subtitle">↗ Young Captains</p>
+                <p class="title">Meet the Skippers</p>
+            </div>
+            <div class="owl-theme owl-carousel">
+                @foreach (var item in Model.Staff)
+                {
+                    <div class="item">
+                        <div class="img">
+                            <img src="~/assets/img/@item.Image" alt="" class="w-100" />
+                        </div>
+                        <div class="con">
+                            <h5 class="mb-0">
+                                @item.Fullname<br /><span>@item.Position.Name</span>
+                            </h5>
+                            <div class="arrow">
+                                <a asp-action="Index" asp-route-id="@item.Id" asp-controller="StaffDetail">
+                                    <i class="fa-solid fa-arrow-right"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </section>
+
+    <section id="sayaboutus">
+        <div class="container">
+            <div class="up-title">
+                <p class="subtitle">↗ What Our Customers</p>
+                <p class="title"><span>Say</span> About Us</p>
+            </div>
+            <div class="comment">
+                <div class="sayimage">
+                    <img src="~/assets/img/05.jpg" alt="" />
+                </div>
+                <div class="caption testimonials">
+                    <div class="owl-carousel owl-theme">
+                        @foreach (var item in Model.Comment)
+                        {
+                            <div class="item-box">
+                                <span class="quote"><i class="fa fa-quote-left"></i></span>
+                                <div class="rating">
+                                    <i class="fa-solid fa-star" style="color: #ffd43b"></i>
+                                    <i class="fa-solid fa-star" style="color: #ffd43b"></i>
+                                    <i class="fa-solid fa-star" style="color: #ffd43b"></i>
+                                    <i class="fa-solid fa-star" style="color: #ffd43b"></i>
+                                    <i class="fa-solid fa-star" style="color: #ffd43b"></i>
+                                </div>
+                                <h5>Highly recommended!</h5>
+                                <p>
+                                    @item.CommentText
+                                </p>
+                                <div class="line-dec"></div>
+                                <div class="info">
+                                    <div class="author-img">
+                                        <img src="" alt="" />
+                                    </div>
+                                    <div class="cont">
+                                        <h6>@item.User.FullName</h6>
+                                        <span>Customer</span>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="sponsor">
+        <div class="container">
+            <div class="up-title">
+                <p class="subtitle">↗ Sponsor & Clients</p>
+                <p class="title">Our Sponsor</p>
+            </div>
+            <div class="owl-carousel owl-theme">
+                @foreach (var item in Model.Partner)
+                {
+                    <div class="sponsor-logo">
+                        <a><img src="~/assets/img/@item.Logo" alt="" /></a>
+                    </div>
+                }
+            </div>
+        </div>
+    </section>
+</main>
+
+

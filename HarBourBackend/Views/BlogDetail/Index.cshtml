@@ -1,0 +1,149 @@
+﻿@model BlogDetailPageVM
+
+
+@section css {
+    <link href="~/assets/css/blogdetail.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" integrity="sha512-vKMx8UnXk60zUwyUnUPM3HbQo8QfmNx7+ltw8Pm5zLusl1XIfwcxo8DbWCqMGKaWeNxWA8yrx5v3SaVpMvR3CA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+}
+
+
+
+@section js {
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js" integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="~/assets/js/blogdetail.js"></script>
+
+}
+
+
+
+
+
+<header>
+    <div class="header-foto" style="background-image: url('/assets/img/@Model.Blog.Image')">
+        <div class="container">
+            <div class="foto-title">
+                <h2>
+                    @Model.Blog.Title <br />
+                </h2>
+                <div class="post">
+                    <div class="date-comment">
+                        <i class="fa-regular fa-calendar"></i>
+                        @Model.Blog.CreateDate.ToString("dd MMM yyyy")
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="cover"></div>
+    </div>
+</header>
+
+<main>
+    <section id="blog-detail">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-md-12">
+                    <div class="img-text">
+                        <img src="~/assets/img/@Model.Blog.Image" alt="" />
+                        <h2>@Model.Blog.Title</h2>
+                        <p>
+                            @Model.Blog.Content
+                        </p>
+
+                        <p>
+                            @Model.Blog.Description
+                        </p>
+                        <div class="col-md-12">
+                            <div class="comments-area">
+                                <h2>Comments</h2>
+                                @if (Model.BlogComments.Count() == 0)
+                                {
+                                    <div class="alert text-center alert-light" role="alert">
+                                        There is no comment, add comment and be first!
+                                    </div>
+                                }
+                                else
+                                {
+                                    @foreach (var item in Model.BlogComments)
+                                    {
+                                        <ol>
+                                            <li>
+                                                <div class="comment-body">
+                                                    <div class="author">
+                                                        <img src="~/assets/img/team/3.png" alt="" />
+                                                        <h3>@item.User.FullName</h3>
+                                                    </div>
+                                                    <div class="date">
+                                                        <p>@item.CreateDate.ToString("dd MM yyyy")</p>
+                                                    </div>
+                                                    <p>
+                                                        @item.CommentText
+                                                    </p>
+                                                </div>
+                                            </li>
+                                        </ol>
+                                    }
+                                }
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="item-form">
+                            <h3>Leave a Comment</h3>
+                            <p>
+                                Your email address will not be published. Required fields
+                                are marked *
+                            </p>
+                            <form action="">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <input value="@Model.CommentData.UserName" type="text" placeholder="Name" />
+                                    </div>
+                                    <div class="col-md-6">
+                                        <input value="@Model.CommentData.UserEmail" type="text" placeholder="Email" />
+                                    </div>
+                                    <div class="col-md-12">
+                                        <textarea class="comment-text" name=""
+                                                  id=""
+                                                  rows="4"
+                                                  placeholder="Comment"></textarea>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <button data-blogId="@Model.CommentData.BlogId" class="add-comment" data-userId="@Model.CommentData.UserId" type="submit">
+                                            <span>Send Message ↗</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-12">
+                    <div class="blog-sidebar">
+                        <div class="col-md-12">
+                            <div class="widget">
+                                <div class="widget-title">
+                                    <h6>
+                                        <span>↗</span>
+                                        Recent Posts
+                                    </h6>
+                                </div>
+                                <ul class="recent">
+                                    @foreach (var item in Model.Blogs.Take(3))
+                                    {
+                                        <li>
+                                            <div class="thum">
+                                                <img src="~/assets/img/@item.Image" alt="" />
+                                            </div>
+                                            <a href="">@item.Title</a>
+                                        </li>
+                                    }
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>

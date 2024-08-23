@@ -1,0 +1,17 @@
+/Users/samedguseynov/Desktop/Final Project/HarBourBackend/Repository/bin/Debug/net6.0/Repository.deps.json
+/Users/samedguseynov/Desktop/Final Project/HarBourBackend/Repository/bin/Debug/net6.0/Repository.runtimeconfig.json
+/Users/samedguseynov/Desktop/Final Project/HarBourBackend/Repository/bin/Debug/net6.0/Repository.dll
+/Users/samedguseynov/Desktop/Final Project/HarBourBackend/Repository/bin/Debug/net6.0/Repository.pdb
+/Users/samedguseynov/Desktop/Final Project/HarBourBackend/Repository/bin/Debug/net6.0/Domain.dll
+/Users/samedguseynov/Desktop/Final Project/HarBourBackend/Repository/bin/Debug/net6.0/Domain.pdb
+/Users/samedguseynov/Desktop/Final Project/HarBourBackend/Repository/obj/Debug/net6.0/Repository.csproj.AssemblyReference.cache
+/Users/samedguseynov/Desktop/Final Project/HarBourBackend/Repository/obj/Debug/net6.0/Repository.GeneratedMSBuildEditorConfig.editorconfig
+/Users/samedguseynov/Desktop/Final Project/HarBourBackend/Repository/obj/Debug/net6.0/Repository.AssemblyInfoInputs.cache
+/Users/samedguseynov/Desktop/Final Project/HarBourBackend/Repository/obj/Debug/net6.0/Repository.AssemblyInfo.cs
+/Users/samedguseynov/Desktop/Final Project/HarBourBackend/Repository/obj/Debug/net6.0/Repository.csproj.CoreCompileInputs.cache
+/Users/samedguseynov/Desktop/Final Project/HarBourBackend/Repository/obj/Debug/net6.0/Repository.csproj.CopyComplete
+/Users/samedguseynov/Desktop/Final Project/HarBourBackend/Repository/obj/Debug/net6.0/Repository.dll
+/Users/samedguseynov/Desktop/Final Project/HarBourBackend/Repository/obj/Debug/net6.0/refint/Repository.dll
+/Users/samedguseynov/Desktop/Final Project/HarBourBackend/Repository/obj/Debug/net6.0/Repository.pdb
+/Users/samedguseynov/Desktop/Final Project/HarBourBackend/Repository/obj/Debug/net6.0/Repository.genruntimeconfig.cache
+/Users/samedguseynov/Desktop/Final Project/HarBourBackend/Repository/obj/Debug/net6.0/ref/Repository.dll

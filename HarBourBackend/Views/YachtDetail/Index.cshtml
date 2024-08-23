@@ -1,0 +1,218 @@
+﻿@model YachtDetailPageVM
+
+
+@section css {
+    <link href="~/assets/css/yacthsdetail.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" integrity="sha512-vKMx8UnXk60zUwyUnUPM3HbQo8QfmNx7+ltw8Pm5zLusl1XIfwcxo8DbWCqMGKaWeNxWA8yrx5v3SaVpMvR3CA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet"
+          type="text/css"
+          href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+}
+
+
+
+@section js {
+    <script>
+
+        const reservations = [
+        @foreach (var item in Model.ReservDates)
+        {
+            @: {
+            @:     startDate: new Date(@item.StartDate),
+            @:     endDate: new Date(@item.EndDate)
+            @: },
+        }
+    ]
+
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js" integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script defer
+            type="text/javascript"
+            src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+    <script defer
+            type="text/javascript"
+            src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+
+    <script defer src="~/assets/js/yacthsdetail.js"></script>
+}
+
+
+
+
+<header>
+    <div class="header-foto" style="background-image: url('/assets/img/01.jpg')">
+        <div class="container">
+            <div class="foto-title">
+                <h1>@(Model.YachtDetail.Length*3)ft Yacht - @Model.YachtDetail.Name</h1>
+            </div>
+            <div class="yacht-detail">
+                <div class="text">
+                    <div class="title">Length</div>
+                    <div class="subtitle">@Model.YachtDetail.Length m (@(Model.YachtDetail.Length*3)ft)</div>
+                </div>
+                <div class="text">
+                    <div class="title">Guests</div>
+                    <div class="subtitle">@Model.YachtDetail.Guest</div>
+                </div>
+                <div class="text">
+                    <div class="title">Build</div>
+                    <div class="subtitle">@Model.YachtDetail.Build</div>
+                </div>
+                <div class="text">
+                    <div class="title">Price</div>
+                    <div class="subtitle">$@Model.YachtDetail.Price / hour</div>
+                </div>
+            </div>
+        </div>
+        <div class="cover"></div>
+    </div>
+</header>
+
+<main>
+    <section id="yacht-details">
+        <div class="container">
+            <div class="row">
+                <div class="col-7">
+                    <h6>Information</h6>
+                    <p class="info-text">
+                        @Model.YachtDetail.Information
+                    </p>
+                    <h6>Description</h6>
+                    <p class="info-text">
+                        @Model.YachtDetail.Description
+                    </p>
+                    <div class="yacht-table">
+                        <span>
+                            <i class="fa-solid fa-ruler-combined"></i>
+                            Length
+                        </span>
+                        <p>@Model.YachtDetail.Length m (@(Model.YachtDetail.Length*3)ft)</p>
+                    </div>
+                    <div class="yacht-table">
+                        <span>
+                            <i class="fa-regular fa-user"></i>
+                            Guests
+                        </span>
+                        <p>@Model.YachtDetail.Guest</p>
+                    </div>
+                    <div class="yacht-table">
+                        <span>
+                            <i class="fa-solid fa-anchor"></i>
+                            Build
+                        </span>
+                        <p>@Model.YachtDetail.Build</p>
+                    </div>
+                    <div class="yacht-table">
+                        <span>
+                            <i class="fa-solid fa-hand-holding-dollar"></i>
+                            Price
+                        </span>
+                        <p>From $@Model.YachtDetail.Price / Hour</p>
+                    </div>
+                </div>
+                <div class="col-5">
+                    <div class="rezev-form">
+                        <div class="head">
+                            <h3>Make A Reservation</h3>
+                            <p>Please Call Us To Ensure</p>
+                        </div>
+                        <div class="rezev-info">
+                            <form method="post" enctype="multipart/form-data">
+                                <div class="row">
+                                    <div class="col-6">
+                                        <input type="text" asp-for="@Model.Yacht.OrderVM.UserName" class="username" placeholder="Full Name" />
+                                    </div>
+                                    <div class="col-6">
+                                        <input type="text" asp-for="@Model.Yacht.OrderVM.UserEmail" class="user-email" placeholder="Email Address" />
+                                    </div>
+                                    <div class="col-8 date-icon">
+                                        <input name="daterange"
+                                               type="text"
+                                               class="form-control input datepicker"
+                                               placeholder="Travel Date"
+                                               autocomplete="off"/>
+                                    </div>
+                                    <div class="col-4">
+                                        <input type="number" asp-for="@Model.Yacht.OrderVM.Guest" class="guest" placeholder="People" />
+                                    </div>
+                                    <div class="col-12">
+                                        <textarea name=""
+                                                  class="enquiry"
+                                                  placeholder="Your Enquiry"
+                                                  id=""></textarea>
+                                    </div>
+                                    @if (User.Identity.IsAuthenticated)
+{
+                                    <div class="col-12">
+                                        <button type="submit" id="@Model.YachtDetail.Id">
+                                            Book Now
+                                        </button>
+                                    </div>
+}
+
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="interior-fotos">
+        <div class="container">
+            <div class="interior-carousel owl-theme owl-carousel">
+                @foreach (var item in Model.YachtDetail.YachtImages.Where(m => !m.IsMain))
+                {
+                    <div class="item">
+                        <div class="img">
+                            <img src="~/assets/img/@item.Image" alt="" />
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </section>
+
+    <section id="luxury-yacht">
+        <div class="container">
+            <div class="owl-carousel owl-theme">
+                @foreach (var item in Model.Yachts)
+                {
+                    <div class="item">
+                        <figure>
+                            <img src="~/assets/img/@item.YachtImages.FirstOrDefault(m=>m.IsMain).Image" alt="" class="img-fluid" />
+                            <div class="mask"></div>
+                            <ul class="features">
+                                <li class="item"><span>Length: @item.Length m (@(item.Length * 3)f)</span></li>
+                                <li class="item"><span>Guests: @item.Guest</span></li>
+                                <li class="item"><span>Build: @item.Build</span></li>
+                            </ul>
+                        </figure>
+                        <div class="content">
+                            <div class="cont">
+                                <h3>@(item.Length * 3)ft Yacht - @item.Name</h3>
+                                <p>
+                                    @item.Information
+                                </p>
+                                <div class="line-dec"></div>
+                                <div class="book">
+                                    <div>
+                                        <span>From</span>
+                                        <div class="price">$@item.Price <span>/ Hour</span></div>
+                                    </div>
+                                    <div>
+                                        <a asp-action="Index" asp-route-id="@item.Id" asp-controller="YachtDetail" class="button"><span>Book Now</span></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+
+            </div>
+        </div>
+    </section>
+</main>
+

@@ -1,0 +1,31 @@
+﻿@model IEnumerable<Subscriber>
+
+<div class="container mt-5 px-5">
+    <div class="create-category ">
+    </div>
+    <div class="table-responsive">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th class="border-top-0">Name</th>
+                    <th class="border-top-0">Operations</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td class="txt-oflo">
+                            <h6>@item.SubscriberEmail</h6>
+                        </td>
+                        <td>
+                            <form class="form-horizontal d-inline mt-4" method="post" asp-action="Delete" asp-route-id="@item.Id">
+                                <button type="submit" class="btn btn-danger text-white">Delete</button>
+                            </form>
+                        </td>
+                    </tr>
+                }
+            <tbody>
+        </table>
+    </div>
+</div>

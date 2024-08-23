@@ -1,0 +1,135 @@
+﻿@model CityDetailPageVM
+
+
+
+@section css {
+    <link href="~/assets/css/destinationdetail.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" integrity="sha512-vKMx8UnXk60zUwyUnUPM3HbQo8QfmNx7+ltw8Pm5zLusl1XIfwcxo8DbWCqMGKaWeNxWA8yrx5v3SaVpMvR3CA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+}
+
+
+
+@section js {
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js" integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="~/assets/js/destinationdetail.js"></script>
+
+}
+
+
+
+
+
+
+<header>
+    <div class="header-foto"
+         style="
+          background-image: url('/assets/img/@Model.CityDetail.BackgroundImage');
+        ">
+        <div class="container">
+            <div class="foto-title">
+                <h1>
+                    @Model.CityDetail.Name
+                </h1>
+            </div>
+        </div>
+        <div class="cover"></div>
+    </div>
+</header>
+
+<main>
+    <section id="tour-detail">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-md-12">
+                    <h6>Infomation</h6>
+                    <div class="detail">
+                        <p><i class="fa-regular fa-clock"></i>@Model.CityDetail.AccommodationDay Days</p>
+                        <p><i class="fa-regular fa-user"></i>Group: @Model.CityDetail.MinLimit - @Model.CityDetail.MaxLimit People</p>
+                        <p><i class="fa-solid fa-location-dot"></i> @Model.CityDetail.Name</p>
+                        <p><i class="fa-regular fa-face-smile-wink"></i>9.3 Super</p>
+                    </div>
+                    <h6>Description</h6>
+                    <p class="mp-30">
+                        @Model.CityDetail.Description
+                    </p>
+                    <div class="tour-table">
+                        <span> Departure </span>
+                        <p>@Model.CityDetail.Departure</p>
+                    </div>
+                    <div class="tour-detail-table">
+                        <span> Price Includes </span>
+                        <ul>
+                            <li><i class="fa-solid fa-check"></i>Accommondatio</li>
+                            <li>
+                                <i class="fa-solid fa-check"></i>Porter & Personal Guide
+                            </li>
+                            <li><i class="fa-solid fa-check"></i>Insurance</li>
+                            <li><i class="fa-solid fa-check"></i>Breakfast</li>
+                            <li><i class="fa-solid fa-check"></i>Tranportation / Car</li>
+                        </ul>
+                    </div>
+                    <div class="gallery-tour">
+                        <h6 class="mt-5">Tour Gallery</h6>
+                        <p>
+                            Gallery non lorem ac erat suscipit bibendum nulla facilisi.
+                            Sedeuter nunc volutpat miss sapien consen turpeutionyer masin
+                            libero sevenion vusetion viventan.
+                        </p>
+                        <div class="row">
+                            @foreach (var item in Model.CityDetail.DestinationImages.Where(m=>!m.IsMain))
+                            {
+                                <div class="col-md-4 gallery-item">
+                                    <img src="~/assets/img/@item.Image"
+                                         alt="" />
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-12">
+                    <div class="reservation">
+                        <h3>Make A Reservation</h3>
+                        <p>Call +1 123 456 0606</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="destinations">
+        <div class="container">
+            <div class="row">
+                <div class="up-title">
+                    <div class="subtitle">↗ Have a look at our</div>
+                    <div class="title">Popular Destinations</div>
+                </div>
+            </div>
+            <div class="owl-carousel owl-theme">
+                @foreach (var item in Model.DestinationCities)
+                {
+                    <div class="item">
+                        <div class="position">
+                            <img src="~/assets/img/@item.DestinationImages.FirstOrDefault().Image" alt="" />
+                        </div>
+                        <span class="price"><a href="#0">$@item.Price</a></span>
+                        <div class="details">
+                            <h5><a href="tour-details.html">@item.Name</a></h5>
+                            <div class="line"></div>
+                            <div class="facilities">
+                                <ul>
+                                    <li><i class="fa-regular fa-clock"></i>@item.AccommodationDay Days</li>
+                                    <li><i class="fa-regular fa-user"></i> @item.MinLimit - @item.MaxLimit</li>
+                                    <li><i class="fa-solid fa-location-dot"></i> @item.Country.Name</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </section>
+</main>
+
+
+

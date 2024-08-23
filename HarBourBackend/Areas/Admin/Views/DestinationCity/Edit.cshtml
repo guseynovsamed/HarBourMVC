@@ -1,0 +1,208 @@
+﻿@model CityEditVM
+
+
+
+@section js {
+    <script src="~/admin/js/CityEdit.js"></script>
+    <script src="https://kit.fontawesome.com/83dcd321a4.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js" integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+}
+
+@section css {
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" integrity="sha512-vKMx8UnXk60zUwyUnUPM3HbQo8QfmNx7+ltw8Pm5zLusl1XIfwcxo8DbWCqMGKaWeNxWA8yrx5v3SaVpMvR3CA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+}
+
+<style>
+    .edit-image {
+        position: relative;
+        width: 200px;
+        height: 200px;
+    }
+
+        .edit-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+    .product-images {
+        display: flex;
+        gap: 10px;
+    }
+
+
+    .product-action {
+        position: absolute;
+        right: -20px;
+        transition: all .3s 0s ease-out;
+        opacity: 0;
+        z-index: 1;
+        visibility: hidden;
+        bottom: 25px;
+    }
+
+        .product-action ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+            .product-action ul li a {
+                cursor: pointer;
+                width: 40px;
+                height: 40px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                box-shadow: 0 1px 3px #010f1c24;
+                background-color: white;
+                transition: 0.5s;
+                position: relative;
+                border-radius: 15px;
+            }
+
+                .product-action ul li a img {
+                    width: auto;
+                }
+
+                .product-action ul li a .tooltip-text {
+                    position: absolute;
+                    visibility: hidden;
+                    opacity: 0;
+                    width: max-content;
+                    font-size: 12px;
+                    background-color: black;
+                    color: #fff;
+                    text-align: center;
+                    border-radius: 4px;
+                    padding: 4px 6px;
+                    z-index: 1;
+                    top: 50%;
+                    right: 100%;
+                    line-height: 1;
+                    transform: translateY(-50%);
+                    transition: opacity .3s ease, visibility .3s ease, transform .3s cubic-bezier(.71,1.7,.77,1.24);
+                }
+
+                    .product-action ul li a .tooltip-text::after {
+                        content: " ";
+                        position: absolute;
+                        top: 50%;
+                        left: 100%;
+                        margin-top: -5px;
+                        border-width: 5px;
+                        border-style: solid;
+                        border-color: transparent transparent transparent black;
+                    }
+
+                .product-action ul li a:hover img {
+                    filter: invert(100%);
+                }
+
+                .product-action ul li a:hover .tooltip-text {
+                    visibility: visible;
+                    opacity: 1;
+                    transform: translate(-8px) translateY(-50%);
+                }
+
+
+    .edit-image:hover .product-action {
+        right: 20px;
+        visibility: visible;
+        opacity: 1;
+    }
+
+
+    .main-image {
+        border: 3px double green;
+    }
+</style>
+
+
+<div class="container mt-5 px-5">
+    <div class="card">
+        <label class="col-md-12" style="font-weight:700">Destination Edit</label>
+        <div display:flex; flex-direction:column; row-gap:5px; class="card-body card-block">
+            <form asp-action="Edit" method="post" class="" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label>Day</label>
+                    <input autocomplete="off" asp-for="AccommodationDay" type="number" maxlength="100" placeholder="AccommodationDay..." class="form-control form-control-line" />
+                    <span class="text-danger" asp-validation-for="AccommodationDay"></span>
+
+                    <label>Departure</label>
+                    <input autocomplete="off" asp-for="Departure" type="text" maxlength="100" placeholder="Departure..." class="form-control form-control-line" />
+                    <span class="text-danger" asp-validation-for="Departure"></span>
+
+                    <label>Description</label>
+                    <input autocomplete="off" asp-for="Description" type="text" maxlength="100" placeholder="Description..." class="form-control form-control-line" />
+                    <span class="text-danger" asp-validation-for="Description"></span>
+
+                    <label>MaxLimit</label>
+                    <input autocomplete="off" asp-for="MaxLimit" type="number" maxlength="100" placeholder="MaxLimit..." class="form-control form-control-line" />
+                    <span class="text-danger" asp-validation-for="MaxLimit"></span>
+
+                    <label>MinLimit</label>
+                    <input autocomplete="off" asp-for="MinLimit" type="number" maxlength="100" placeholder="MinLimit..." class="form-control form-control-line" />
+                    <span class="text-danger" asp-validation-for="MinLimit"></span>
+
+                    <label>Name</label>
+                    <input autocomplete="off" asp-for="Name" type="text" maxlength="100" placeholder="Name..." class="form-control form-control-line" />
+                    <span class="text-danger" asp-validation-for="Name"></span>
+
+
+                    <label>Price</label>
+                    <input autocomplete="off" asp-for="Price"  type="number" min="0" step="any" maxlength="100" placeholder="Price..." class="form-control form-control-line" />
+                    <span class="text-danger" asp-validation-for="Price"></span>
+
+
+                    <label>Country</label>
+                    <select class="form-control mt-3" asp-for="CountryId" asp-items="@ViewBag.country">
+                    </select>
+
+
+                    <label>NewBackgroundImage</label>
+                    <input asp-for="NewBackgroundImage" class="form-control form-control-line" />
+                    <span class="text-danger" asp-validation-for="NewBackgroundImage"></span>
+
+
+                    <label>Images</label>
+                    <div class="product-images">
+                        @foreach (var item in Model.ExistDestinationImages)
+                        {
+                            <div class="edit-image @(item.IsMain ? "main-image" : "")" data-id="@item.Id" data-product-id="@item.DestinationCity.Id">
+                                <img src="~/assets/img/@item.Image" />
+                                <div class="product-action">
+                                    <ul>
+                                        <li>
+                                            <a href="" class="make-main">
+                                                <i class="fa-solid fa-anchor text-success"></i>
+                                                <span class="tooltip-text">Make main image</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a class="remove-image">
+                                                <i class="fa-solid fa-trash text-danger"></i>
+                                                <span class="tooltip-text">Remove image</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        }
+                        <div class="upload-container">
+                            <label class="upload-button">
+                                <input asp-for="NewDestinationImages">
+                            </label>
+                        </div>
+                        <span class="text-danger d-block" asp-validation-for="NewDestinationImages"></span>
+                    </div>
+
+                </div>
+                <button type="submit" class="btn btn-success">Submit</button>
+                <a asp-action="Index" class="btn btn-primary">Back</a>
+            </form>
+        </div>
+    </div>
+</div>
+

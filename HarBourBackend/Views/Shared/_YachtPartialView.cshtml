@@ -1,0 +1,39 @@
+﻿@model YachtPageVM
+
+
+@foreach (var item in Model.Yachts)
+{
+    <div class="col-4">
+        <div class="square-flip">
+            <div class="square"
+                 data-background="~/assets/img/yachts/01.jpg"
+                 style="background-image: url('/assets/img/@item.YachtImages.FirstOrDefault(m=>m.IsMain).Image')">
+                <span class="category"><a href="#0">Featured</a></span>
+                <div class="square-container">
+                    <div class="box-title">
+                        <h4>@(item.Length*3)ft Yacht - @item.Name</h4>
+                        <h6>$@item.Price <span>/ Hour</span></h6>
+                    </div>
+                </div>
+                <div class="flip-overlay"></div>
+            </div>
+            <div class="square2">
+                <div class="square-container2">
+                    <h4>@(item.Length*3) Yacht - @item.Name</h4>
+                    <p>
+                        @item.Description
+                    </p>
+                    <div class="ullist">
+                        <ul>
+                            <li>Length: @item.Length m (@(item.Length*2))</li>
+                            <li>Guests: @item.Guest</li>
+                            <li>Build: @item.Build</li>
+                        </ul>
+                    </div>
+                    <div><a asp-action="Index" asp-route-id="@item.Id" asp-controller="YachtDetail" class="button-1">Know More</a></div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+

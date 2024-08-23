@@ -1,0 +1,306 @@
+﻿@model HomeVM
+
+
+
+
+@section js {
+}
+
+@section css {
+}
+
+
+
+
+
+<header>
+    <div class="header-video">
+        <video src="~/assets/img/@Model.SliderVideos.FirstOrDefault().Video"
+               type="video/mp4"
+               playsinline
+               autoplay
+               loop
+               muted>
+        </video>
+        <div class="container">
+            <div class="video-title">
+                <h4>
+                    <span>@Model.SliderVideos.FirstOrDefault().TopTitle</span>
+                </h4>
+                <h1>@Model.SliderVideos.FirstOrDefault().MainTitle </h1>
+                <p>@Model.SliderVideos.FirstOrDefault().Description</p>
+            </div>
+        </div>
+        <div class="cover"></div>
+    </div>
+</header>
+
+<main>
+    <section id="destinations">
+        <div class="container">
+            <div class="row">
+                <div class="up-title col-md-12">
+                    <div class="subtitle">↗ Have a look at our</div>
+                    <div class="title">Popular Destinations</div>
+                </div>
+            </div>
+            <div class="owl-carousel owl-theme">
+                @foreach (var item in Model.Cities)
+                {
+                    <div class="item">
+                        <div class="position">
+                            <img src="~/assets/img/@item.DestinationImages.FirstOrDefault(m=>m.IsMain).Image" alt="" />
+                        </div>
+                        <span class="price"><a href="#">$@item.Price</a></span>
+                        <div class="details">
+                            <h5><a asp-action="Index" asp-route-id="@item.Id" asp-controller="DestinationDetail">@item.Name</a></h5>
+                            <div class="line"></div>
+                            <div class="facilities">
+                                <ul>
+                                    <li><i class="fa-regular fa-clock"></i>@item.AccommodationDay Days</li>
+                                    <li><i class="fa-regular fa-user"></i> @item.MinLimit-@item.MaxLimit</li>
+                                    <li><i class="fa-solid fa-location-dot"></i> @item.Country.Name</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </section>
+
+    <section id="yachts">
+        <div class="container">
+            <div class="row">
+                <div class="text-center col-md-12 mb-30">
+                    <h6>↗ Premium Yachts</h6>
+                    <h3>Yachts & Boats</h3>
+                </div>
+            </div>
+            <div class="yachts-carousel owl-theme owl-carousel">
+                @foreach (var item in Model.Yachts)
+                {
+                    <div class="item">
+                        <div class="img">
+                            <img src="~/assets/img/@item.YachtImages.FirstOrDefault(m=>m.IsMain).Image" alt="" />
+                        </div>
+                        <div class="wrapper">
+                            <div class="row">
+                                <div class="col-md-10">
+                                    <div class="title">
+                                        <a href="#"> @(@item.Length * 3)ft Yacht - @item.Name</a>
+                                    </div>
+                                    <div class="details">
+                                        <span>
+                                            <i class="fa-solid fa-ruler-combined"></i>Length: @item.Length m
+                                            (@(@item.Length * 3)ft)
+                                        </span>
+                                        <span><i class="fa-regular fa-user"></i>Guests: @item.Guest</span>
+                                        <span><i class="fa-solid fa-anchor"></i>Build: @item.Build</span>
+                                    </div>
+                                </div>
+                                <div class="col-md-2 justify-content-end">
+                                    <div class="arrow">
+                                        <a asp-action="Index" asp-route-id="@item.Id" asp-controller="YachtDetail">
+                                            <span class="fa-solid fa-arrow-right"></span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </section>
+
+    <section id="watersports">
+        <div class="container">
+            <div class="row">
+                <div class="text-center col-md-12 mb-30">
+                    <div class="sport-subtitle">↗ Our Activities</div>
+                    <div class="sport-title"><span>Other</span> Watersports</div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="owl-theme owl-carousel">
+                            @foreach (var item in Model.WaterSports)
+                            {
+
+                                <div class="watersports">
+                                    <div class="sport-image">
+                                        <img src="~/assets/img/@item.SportImages.FirstOrDefault(m=>m.IsMain).Image"
+                                             alt=""
+                                             class="img-fluid" />
+                                    </div>
+                                    <div class="caption padding-left">
+                                        <h4>
+                                            <a href="watersports-details.html">@item.Name</a>
+                                        </h4>
+                                        <p>
+                                            @item.Policy
+                                        </p>
+                                        <div class="ullist">
+                                            <ul>
+                                                <li>Lorem amet ipsum.</li>
+                                                <li>Molestie elit vel cursus.</li>
+                                            </ul>
+                                        </div>
+                                        <div class="line-dec"></div>
+                                        <div class="book">
+                                            <div>
+                                                <a asp-action="Index" asp-route-id="@item.Id" asp-controller="WaterSportDetail" class="button">Know More</a>
+                                            </div>
+                                            <div>
+                                                <span>From</span>
+                                                <div class="price">$@item.Price <span>/ Hour</span></div>
+                                            </div>
+                                        </div>
+                                        <div class="iconso">
+                                            <span class="flaticon-rudder"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="typeofyacht">
+        <div class="container">
+            <div class="row">
+                <div class="uptitle col-md-12">
+                    <span class="subtitle">↗ Explore</span>
+                    <p class="title"><span>Choose</span> Type Of Yacht</p>
+                </div>
+                @for (int i = 0; i < Model.YachtCategories.Count(); i++)
+                {
+
+                    <div class="item">
+                        <span class="number">@(i+1)</span>
+                        <div class="icon">
+                            <img src="~/assets/img/@Model.YachtCategories.ToList()[i].IconImage" alt="" />
+                        </div>
+                        <h5>
+                            <a asp-controller="Yacht" asp-action="Index" asp-route-categoryId="@Model.YachtCategories.ToList()[i].Id">@Model.YachtCategories.ToList()[i].Name</a>
+                        </h5>
+                        <p>
+                            @Model.YachtCategories.ToList()[i].Description
+                        </p>
+                        <div class="arrow">
+                            <a asp-controller="Yacht" asp-action="Index" asp-route-categoryId="@Model.YachtCategories.ToList()[i].Id">
+                                <i class="fa-solid fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </section>
+
+
+
+    <section id="sayaboutus">
+        <div class="container">
+            <div class="up-title col-md-12">
+                <p class="subtitle">↗ What Our Customers</p>
+                <p class="title"><span>Say</span> About Us</p>
+            </div>
+            <div class="comment">
+                <div class="sayimage">
+                    <img src="~/assets/img/05.jpg" alt="" />
+                </div>
+                <div class="caption testimonials">
+                    <div class="owl-carousel owl-theme">
+                        @foreach (var item in Model.Comments)
+                        {
+                            <div class="item-box">
+                                <span class="quote"><i class="fa fa-quote-left"></i></span>
+                                <div class="rating">
+                                    <i class="fa-solid fa-star" style="color: #ffd43b"></i>
+                                    <i class="fa-solid fa-star" style="color: #ffd43b"></i>
+                                    <i class="fa-solid fa-star" style="color: #ffd43b"></i>
+                                    <i class="fa-solid fa-star" style="color: #ffd43b"></i>
+                                    <i class="fa-solid fa-star" style="color: #ffd43b"></i>
+                                </div>
+                                <h5>Highly recommended!</h5>
+                                <p>
+                                    @item.CommentText
+                                </p>
+                                <div class="line-dec"></div>
+                                <div class="info">
+                                    <div class="author-img">
+                                        <img src="" alt="" />
+                                    </div>
+                                    <div class="cont">
+                                        <h6>@item.User.FullName</h6>
+                                        <span>Customer</span>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="articles">
+        <div class="container">
+            <div class="row">
+                <div class="up-title col-md-12 mb-30">
+                    <p class="subtitle">↗ News & Blog</p>
+                    <p class="title">Articles About Yacht</p>
+                </div>
+            </div>
+            <div class="owl-carousel owl-theme">
+                @foreach (var item in Model.Blogs)
+                {
+                    <div class="item">
+                        <div class="img">
+                            <img src="~/assets/img/@item.Image" alt="" />
+                        </div>
+                        <div class="wrapper">
+                            <div class="date">
+                                <a>@item.CreateDate.ToString("dd MMM, yyyy")</a>
+                            </div>
+                            <div class="info">
+                                <div class="user">
+                                    <a href=""><i class="fa-regular fa-message"></i>@item.Comments.Count() Comments</a>
+                                </div>
+                                <div class="text">
+                                    <a>@item.Title</a>
+                                </div>
+                                <a asp-action="Index" asp-route-id="@item.Id" asp-controller="BlogDetail" class="icon-btn">
+                                    <i class="fa-solid fa-arrow-right"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                }
+
+            </div>
+        </div>
+    </section>
+
+    <section id="down-video">
+        <div class="container">
+            <div class="up-title text-center col-md-12">
+                <p class="subtitle">↗ Discover</p>
+                <p class="title">Watch Yacht Video</p>
+            </div>
+            <div class="video">
+                <a href="https://www.youtube.com/watch?v=Wz0jbPIWU30">
+                    <div class="play-bt">
+                        <span class="icon">
+                            <i class="fa-solid fa-play"></i>
+                        </span>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+</main>

@@ -1,0 +1,78 @@
+﻿@model WaterSportPageVM
+
+@section css {
+    <link href="~/assets/css/watersports.css" rel="stylesheet" />
+}
+
+
+
+@section js {
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+    <script src="~/assets/js/watersports.js"></script>
+}
+
+<header>
+    <div class="header-foto"
+         style="background-image: url(assets/img/watersports/donut-boat.jpg)">
+        <div class="container">
+            <div class="foto-title">
+                <h1>
+                    <span>Water</span>
+                    Activities
+                </h1>
+                <p>Watersports</p>
+            </div>
+        </div>
+        <div class="cover"></div>
+    </div>
+</header>
+
+<main>
+    <section id="watersport">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    @foreach (var item in Model.WaterSports)
+                    {
+                        <div class="watersports">
+                            <div class="sport-image">
+                                <img src="~/assets/img/@item.SportImages.FirstOrDefault(m=>m.IsMain).Image"
+                                     alt=""
+                                     class="img-fluid" />
+                            </div>
+                            <div class="caption padding-left">
+                                <h4>
+                                    <a href="watersports-details.html">@item.Name</a>
+                                </h4>
+                                <p>
+                                    @item.Policy
+                                </p>
+                                <div class="ullist">
+                                    <ul>
+                                        <li>Lorem amet ipsum.</li>
+                                        <li>Molestie elit vel cursus.</li>
+                                    </ul>
+                                </div>
+                                <div class="line-dec"></div>
+                                <div class="book">
+                                    <div>
+                                        <a asp-action="Index" asp-route-id="@item.Id" asp-controller="WaterSportDetail" class="button">Know More</a>
+                                    </div>
+                                    <div>
+                                        <span>From</span>
+                                        <div class="price">$@item.Price <span>/ Hour</span></div>
+                                    </div>
+                                </div>
+                                <div class="iconso">
+                                    <span class="flaticon-rudder"></span>
+                                </div>
+                            </div>
+                        </div>
+                    }
+
+                </div>
+            </div>
+        </div>
+    </section>
+</main>

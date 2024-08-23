@@ -1,0 +1,46 @@
+﻿@model BlogPageVM
+
+
+
+@if (Model.Blogs.Count() != 0)
+{
+    foreach (var item in Model.Blogs)
+    {
+
+        <div class="item">
+            <div class="post-img">
+                <a href="">
+                    <img src="~/assets/img/@item.Image" alt="" />
+                </a>
+                <div class="date">
+                    <a href="">
+                        <span>@item.CreateDate.ToString("MMM")</span>
+                        <i>@item.CreateDate.ToString("dd")</i>
+                    </a>
+                </div>
+            </div>
+            <div class="post-text">
+                <a href="">
+                    <span> ↗ Yachts </span>
+                </a>
+                <h5>
+                    <a href="">@item.Title</a>
+                </h5>
+                <p>
+                    @item.Content
+                </p>
+                <a asp-action="Index" asp-route-id="@item.Id" asp-controller="BlogDetail" class="button"> Read more ↗ </a>
+            </div>
+        </div>
+    }
+}
+else
+{
+    <div class="alert alert-primary text-center" role="alert">
+        Blogs not found
+    </div>
+
+
+}
+
+

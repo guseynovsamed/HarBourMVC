@@ -1,0 +1,48 @@
+﻿@model StaffCreateVM
+
+
+<div class="container mt-5 px-5" style="width:70% !important;margin: 0 auto !important">
+    <h3 class="text-center">Create new Employye</h3>
+    <form class="form-horizontal mt-4" method="post" asp-action="Create" enctype="multipart/form-data">
+        <div style="display:flex; flex-direction:column; row-gap:5px;" class="form-group">
+            <table>Fullname</table>
+            <input asp-for="Fullname" type="text" class="form-control mt-3" placeholder="Fullname">
+            <span class="text-danger" asp-validation-for="Fullname"></span>
+
+            <table>Description</table>
+            <input asp-for="Description" type="text" class="form-control mt-3" placeholder="Description">
+            <span class="text-danger" asp-validation-for="Description"></span>
+
+            <table>Biography</table>
+            <input asp-for="Biography" type="text" step="any" min="0" class="form-control mt-3" placeholder="Biography">
+            <span class="text-danger" asp-validation-for="Biography"></span>
+
+            <table>Awards</table>
+            <input asp-for="Awards" type="text" step="any" min="0" class="form-control mt-3" placeholder="Awards">
+            <span class="text-danger" asp-validation-for="Awards"></span>
+
+            <table>Education</table>
+            <input asp-for="Education" type="text" step="any" min="0" class="form-control mt-3" placeholder="Education">
+            <span class="text-danger" asp-validation-for="Education"></span>
+
+            <table>Phone</table>
+            <input asp-for="Phone" type="text" step="any" min="0" class="form-control mt-3" placeholder="Phone">
+            <span class="text-danger" asp-validation-for="Phone"></span>
+
+            <table>Mail</table>
+            <input asp-for="Mail" type="text" step="any" min="0" class="form-control mt-3" placeholder="Mail">
+            <span class="text-danger" asp-validation-for="Mail"></span>
+
+            <table>Position</table>
+            <select class="form-control mt-3" asp-for="PositionId" asp-items="@ViewBag.position">
+            </select>
+
+            <table>Image</table>
+            <input asp-for="Image" class="form-control mt-3">
+            <span class="text-danger" asp-validation-for="Image"></span>
+
+        </div>
+        <button type="submit" class="btn btn-primary mr-2">Sumbit</button>
+        <a class="btn btn-primary" asp-controller="Staff" asp-action="Index">Cancel</a>
+    </form>
+</div>

@@ -1,0 +1,58 @@
+﻿@model List<YachtVM>
+
+
+<div class="container mt-5 px-5">
+    @if (User.IsInRole("SuperAdmin"))
+        {
+        <div class="create-category ">
+            <a asp-area="Admin" asp-controller="Yacht" asp-action="Create" class="btn btn-success text-white mr-10">Create</a>
+        </div>
+        }
+        <div class="table-responsive">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th class="border-top-0">Name</th>
+                        <th class="border-top-0">Price</th>
+                        <th class="border-top-0">Description</th>
+                        <th class="border-top-0">Category</th>
+                        <th class="border-top-0">Guest</th>
+                        <th class="border-top-0">Length</th>
+                        <th class="border-top-0">Operatioms</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td class="txt-oflo">
+                                <h6>@item.Name</h6>
+                            </td>
+                            <td class="txt-oflo">
+                                <h6>@item.Price</h6>
+                            </td>
+                            <td class="txt-oflo">
+                                <h6>@item.Category</h6>
+                            </td>
+                            <td class="txt-oflo">
+                                <h6>@item.Guest</h6>
+                            </td>
+                            <td class="txt-oflo">
+                                <h6>@item.Length</h6>
+                            </td>
+                            <td>
+                                <a class="btn btn-info text-white" asp-action="Detail" asp-route-id="@item.Id">Info</a>
+                                <a class="btn btn-warning text-white" asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+                                @if (User.IsInRole("SuperAdmin"))
+                                    {
+                                    <form class="form-horizontal d-inline mt-4" method="post" asp-action="Delete" asp-route-id="@item.Id">
+                                        <button type="submit" class="btn btn-danger text-white">Delete</button>
+                                    </form>
+                                    }
+                                </td>
+                        </tr>
+                    }
+                <tbody>
+            </table>
+        </div>
+    </div>

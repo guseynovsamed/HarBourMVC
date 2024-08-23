@@ -1,0 +1,67 @@
+﻿@model DestinationPageVM
+
+
+
+@section css {
+    <link href="~/assets/css/destinations.css" rel="stylesheet" />
+}
+
+
+
+@section js {
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+    <script src="~/assets/js/destinations.js"></script>
+}
+
+
+
+
+
+<header>
+    <div class="header-foto" style="background-image: url(assets/img/2.jpg)">
+        <div class="container">
+            <div class="foto-title">
+                <h1>
+                    <span>Popular</span>
+                    Destinations
+                </h1>
+            </div>
+        </div>
+        <div class="cover"></div>
+    </div>
+</header>
+
+<main>
+
+
+    <section id="destinations">
+        <div class="container">
+            <div class="row">
+                @foreach (var item in Model.DestinationCities)
+                {
+                    <div class="col-3">
+                        <div class="item">
+                            <div class="position">
+                                <img src="~/assets/img/@item.DestinationImages.FirstOrDefault(m=>m.IsMain).Image" alt="" />
+                            </div>
+                            <span class="price"><a href="#0">$@item.Price</a></span>
+                            <div class="details">
+                                <h5><a asp-action="Index" asp-route-id="@item.Id" asp-controller="DestinationDetail">@item.Name</a></h5>
+                                <div class="line"></div>
+                                <div class="facilities">
+                                    <ul>
+                                        <li><i class="fa-regular fa-clock"></i>@item.AccommodationDay Days</li>
+                                        <li><i class="fa-regular fa-user"></i> @item.MinLimit - @item.MaxLimit</li>
+                                        <li><i class="fa-solid fa-location-dot"></i> @item.Country.Name</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </section>
+
+</main>
